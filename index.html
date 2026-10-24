@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Meet members of the Association of Professional Food Service Providers of Nigeria and connect with food professionals in your area.">
+  <title>APFSPN | Members Directory</title>
+  <style>
+    :root {
+      --ink: #18251f; --muted: #66736b; --green: #176b45; --green-dark: #0d4d32;
+      --lime: #d9efb1; --cream: #f7f8f2; --white: #fff; --line: #e4e9e1;
+      --gold: #e6b65a; --shadow: 0 12px 36px rgba(20, 48, 34, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--cream); line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar { background: var(--green-dark); color: #e9f4e8; font-size: .83rem; }
+    .topbar .wrap { display:flex; justify-content:space-between; gap:14px; padding:9px 0; flex-wrap:wrap; }
+    .topbar strong { color: #fff; letter-spacing:.02em; }
+    header { background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line); position: sticky; top:0; z-index:10; backdrop-filter: blur(14px); }
+    .nav { min-height: 78px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:12px; min-width: 210px; }
+    .logo { width:46px; height:46px; border-radius:14px; display:grid; place-items:center; color:white; font-weight:900; letter-spacing:-.07em; background:linear-gradient(145deg, #218958, #0b4e32); box-shadow:0 7px 18px rgba(23,107,69,.22); }
+    .brand-name { font-size:.9rem; font-weight:850; line-height:1.15; letter-spacing:-.02em; }
+    .brand-name small { display:block; font-size:.68rem; font-weight:650; color:var(--muted); letter-spacing:.02em; margin-top:4px; }
+    nav { display:flex; align-items:center; gap:26px; font-size:.9rem; font-weight:650; color:#425149; }
+    nav a:hover { color:var(--green); }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; cursor:pointer; border-radius:999px; padding:12px 18px; font-weight:750; font-size:.9rem; transition:transform .18s, background .18s; }
+    .btn:hover { transform:translateY(-1px); }
+    .btn-primary { background:var(--green); color:#fff; box-shadow:0 7px 18px rgba(23,107,69,.18); }
+    .btn-primary:hover { background:var(--green-dark); }
+    .btn-light { background:#edf5e5; color:var(--green-dark); }
+    .hero { overflow:hidden; position:relative; padding:72px 0 56px; background: radial-gradient(ellipse at 88% 10%, rgba(217,239,177,.7), transparent 35%), linear-gradient(130deg, #f7f8f2, #edf5e9); }
+    .hero:after { content:""; position:absolute; right:-80px; bottom:-200px; width:420px; height:420px; border:1px solid rgba(23,107,69,.12); border-radius:50%; box-shadow:0 0 0 36px rgba(23,107,69,.035), 0 0 0 72px rgba(23,107,69,.025); pointer-events:none; }
+    .hero-grid { display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:54px; position:relative; z-index:1; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:var(--green); font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; font-weight:850; }
+    .dot { width:7px; height:7px; background:var(--gold); border-radius:50%; }
+    h1 { font-size:clamp(2.5rem, 5vw, 4.3rem); line-height:1.02; letter-spacing:-.065em; margin:18px 0 20px; max-width:680px; }
+    h1 em { color:var(--green); font-style:normal; }
+    .hero p { color:#5e6d63; font-size:1.08rem; max-width:560px; margin:0 0 28px; }
+    .hero-actions { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+    .hero-note { display:flex; align-items:center; gap:10px; margin-top:28px; color:#68756c; font-size:.84rem; }
+    .avatar-stack { display:flex; }
+    .avatar-stack .mini-initial { width:30px; height:30px; border:2px solid #f4f8ee; border-radius:50%; display:grid; place-items:center; font-size:9px; font-weight:800; color:#fff; margin-left:-8px; }
+    .avatar-stack .mini-initial:first-child { margin-left:0; }
+    .hero-card { background:#fff; padding:18px; border-radius:28px; box-shadow:var(--shadow); transform:rotate(1.5deg); }
+    .hero-photo { min-height:300px; border-radius:20px; background:linear-gradient(140deg, rgba(9,63,40,.08), rgba(9,63,40,.3)), url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=85') center/cover; position:relative; overflow:hidden; }
+    .floating-label { position:absolute; left:18px; bottom:18px; background:rgba(255,255,255,.94); padding:13px 16px; border-radius:16px; box-shadow:0 8px 25px rgba(0,0,0,.1); }
+    .floating-label strong { display:block; font-size:1.1rem; }
+    .floating-label span { color:var(--muted); font-size:.8rem; }
+    .hero-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:18px 4px 2px; }
+    .stat { padding:9px 10px; background:#f6f8f3; border-radius:13px; }
+    .stat b { display:block; font-size:1.2rem; letter-spacing:-.04em; }
+    .stat span { display:block; color:var(--muted); font-size:.72rem; }
+    .directory { padding:66px 0 74px; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:26px; }
+    .kicker { color:var(--green); font-size:.76rem; text-transform:uppercase; letter-spacing:.13em; font-weight:850; }
+    h2 { font-size:clamp(1.8rem, 3vw, 2.6rem); line-height:1.08; letter-spacing:-.05em; margin:9px 0 9px; }
+    .section-head p { color:var(--muted); margin:0; max-width:600px; }
+    .count { color:var(--muted); font-size:.86rem; white-space:nowrap; }
+    .search-panel { display:grid; grid-template-columns:1.5fr .8fr .8fr auto; gap:10px; padding:14px; border:1px solid var(--line); background:white; border-radius:20px; box-shadow:0 6px 22px rgba(20,48,34,.035); margin-bottom:26px; }
+    .field { position:relative; }
+    .field input, .field select { width:100%; height:48px; padding:0 14px; color:var(--ink); background:#fbfcf9; border:1px solid #e2e8df; border-radius:12px; outline:none; }
+    .field input:focus, .field select:focus { border-color:#70a889; box-shadow:0 0 0 3px rgba(23,107,69,.1); }
+    .search-icon { position:absolute; left:14px; top:13px; color:#7a887e; font-size:1rem; }
+    .field .search-input { padding-left:40px; }
+    .member-grid { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:18px; }
+    .member { background:white; border:1px solid var(--line); border-radius:20px; overflow:hidden; transition:transform .2s, box-shadow .2s; }
+    .member:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+    .member-photo { width:100%; height:190px; display:flex; align-items:center; justify-content:center; background:#e8efe5; }
+    .member-initials { font-size:3.25rem; font-weight:800; letter-spacing:-.06em; color:#fff; }
+    .member:nth-child(1) .member-photo { background:#52745b; }
+    .member:nth-child(2) .member-photo { background:#b66b42; }
+    .member:nth-child(3) .member-photo { background:#6d719f; }
+    .member:nth-child(4) .member-photo { background:#3d7c78; }
+    .member:nth-child(5) .member-photo { background:#9b6d8d; }
+    .member:nth-child(6) .member-photo { background:#8a7448; }
+    .member:nth-child(7) .member-photo { background:#527d9a; }
+    .member:nth-child(8) .member-photo { background:#a35f55; }
+    .member:nth-child(9) .member-photo { background:#657f4c; }
+    .member:nth-child(10) .member-photo { background:#755e91; }
+    .copy-notice { position:fixed; left:50%; bottom:22px; transform:translateX(-50%); z-index:20; background:#172b20; color:white; padding:12px 18px; border-radius:12px; box-shadow:0 8px 30px #0002; font-size:.92rem; display:none; max-width:calc(100% - 32px); text-align:center; }
+    .member-body { padding:16px; }
+    .member-top { display:flex; justify-content:space-between; align-items:start; gap:10px; }
+    .member h3 { font-size:1.03rem; line-height:1.2; letter-spacing:-.025em; margin:0 0 5px; }
+    .member-role { color:var(--muted); font-size:.79rem; }
+    .verified { color:var(--green); background:#edf7e9; font-size:.65rem; font-weight:800; border-radius:999px; padding:5px 7px; white-space:nowrap; }
+    .details { margin:15px 0 16px; display:grid; gap:8px; }
+    .detail { display:flex; gap:8px; align-items:center; font-size:.82rem; color:#536157; }
+    .detail b { color:#35473b; font-weight:700; }
+    .member .btn { width:100%; padding:10px 12px; font-size:.82rem; }
+    .empty { display:none; text-align:center; padding:48px 20px; color:var(--muted); background:#fff; border:1px dashed #cbd7c9; border-radius:18px; grid-column:1/-1; }
+    .join-section { padding:0 0 78px; }
+    .join-card { position:relative; overflow:hidden; background:var(--green-dark); border-radius:28px; padding:42px; color:white; display:grid; grid-template-columns:1.2fr .8fr; gap:30px; align-items:center; }
+    .join-card:after { content:""; position:absolute; width:340px; height:340px; right:-110px; top:-180px; border-radius:50%; border:1px solid rgba(217,239,177,.28); box-shadow:0 0 0 32px rgba(217,239,177,.05), 0 0 0 64px rgba(217,239,177,.04); }
+    .join-card .kicker { color:var(--lime); }
+    .join-card h2 { max-width:580px; }
+    .join-card p { color:#c5d8ca; max-width:570px; margin-bottom:0; }
+    .join-actions { position:relative; z-index:1; justify-self:end; }
+    .join-actions .btn { background:var(--lime); color:var(--green-dark); }
+    .join-meta { font-size:.78rem; color:#b8cbbd; margin-top:12px; text-align:center; }
+    footer { background:#102d20; color:#d8e7dc; padding:32px 0; }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap:22px; flex-wrap:wrap; }
+    .footer-title { font-weight:850; color:white; }
+    footer p { color:#a9c1b1; margin:5px 0 0; font-size:.82rem; }
+    .footer-links { display:flex; gap:20px; color:#d2e3d7; font-size:.85rem; }
+    .disclaimer { background:#fff7e5; color:#72531c; border:1px solid #f0dfb8; border-radius:12px; padding:10px 13px; font-size:.78rem; margin-top:22px; }
+    @media (max-width: 950px) {
+      .hero-grid { grid-template-columns:1fr .75fr; gap:26px; }
+      .member-grid { grid-template-columns:repeat(3, minmax(0,1fr)); }
+      .search-panel { grid-template-columns:1fr 1fr; }
+      .search-panel .search-field { grid-column:1/-1; }
+    }
+    @media (max-width: 700px) {
+      .wrap { width:min(100% - 28px, 1160px); }
+      .nav { min-height:68px; }
+      nav { display:none; }
+      .nav > .btn { padding:10px 13px; font-size:.8rem; }
+      .brand { min-width:0; }
+      .brand-name { font-size:.78rem; }
+      .brand-name small { font-size:.61rem; }
+      .logo { width:40px; height:40px; border-radius:12px; }
+      .hero { padding:48px 0 38px; }
+      .hero-grid { grid-template-columns:1fr; }
+      .hero-card { max-width:480px; transform:none; }
+      .hero-photo { min-height:230px; }
+      .section-head { align-items:start; flex-direction:column; }
+      .directory { padding:48px 0 54px; }
+      .member-grid { grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px; }
+      .member-photo { height:155px; }
+      .member-body { padding:12px; }
+      .member h3 { font-size:.92rem; }
+      .verified { display:none; }
+      .join-card { grid-template-columns:1fr; padding:28px 23px; }
+      .join-actions { justify-self:start; }
+      .join-meta { text-align:left; }
+    }
+    @media (max-width: 390px) {
+      .member-grid { grid-template-columns:1fr; }
+      .member-photo { height:220px; }
+      .search-panel { grid-template-columns:1fr; }
+      .search-panel .search-field { grid-column:auto; }
+      .hero-actions .btn { width:100%; }
+      .hero-stats { grid-template-columns:repeat(3,1fr); }
+      .stat { padding:8px 6px; }
+      .stat b { font-size:1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap"><span><strong>APFSPN</strong> · A community for food service professionals</span><span>Connect · Collaborate · Grow</span></div>
+  </div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="APFSPN home">
+        <div class="logo">A<span style="color:#d9efb1">P</span></div>
+        <div class="brand-name">APFSPN <small>Association of Professional Food Service Providers of Nigeria</small></div>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#directory">Find a member</a>
+        <a href="#about">About the association</a>
+        <a href="#join">Become a member</a>
+      </nav>
+      <a class="btn btn-primary" href="#join">Join the association <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> The people behind the plate</div>
+          <h1>Meet the people shaping Nigeria's <em>food scene.</em></h1>
+          <p>Discover food service professionals, explore their specialities, and connect with members working across your area.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#directory">Explore the directory <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-light" href="#join">Become a member</a>
+          </div>
+          <div class="hero-note">
+            <div class="avatar-stack" aria-hidden="true"><span class="mini-initial" style="background:#52745b">AO</span><span class="mini-initial" style="background:#b66b42">TA</span><span class="mini-initial" style="background:#6d719f">ZB</span><span class="mini-initial" style="background:#3d7c78">CE</span></div>
+            <span>A shared space for food businesses and professionals.</span>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Food service community highlight">
+          <div class="hero-photo">
+            <div class="floating-label"><strong>Good food. Good people.</strong><span>One professional community.</span></div>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><b>01</b><span>Community</span></div>
+            <div class="stat"><b>10</b><span>Demo profiles · official count to confirm</span></div>
+            <div class="stat"><b>∞</b><span>Ways to connect</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="directory" id="directory">
+      <div class="wrap" style="margin-bottom:28px">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;max-width:900px">
+          <div class="kicker">A note from the President · draft for approval</div>
+          <p style="font-size:1.05rem;color:#35473b;margin:10px 0 8px">“Our association is about bringing food service professionals together, helping members connect, and creating opportunities for our industry to grow.”</p>
+          <div style="font-size:.82rem;color:var(--muted)">Proposed message for the President to review and approve before publication.</div>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">Member directory</div><h2>Find your people.</h2><p>Search by name, cuisine, speciality, or area to discover the right person to connect with.</p></div>
+          <div class="count"><strong id="resultCount">10</strong> sample members</div>
+        </div>
+        <div class="search-panel" role="search">
+          <div class="field search-field"><span class="search-icon" aria-hidden="true">⌕</span><input class="search-input" id="searchInput" type="search" placeholder="Search name, cuisine or speciality…" aria-label="Search members"></div>
+          <div class="field"><select id="areaFilter" aria-label="Filter by area"><option value="">All areas</option><option>Lagos Island</option><option>Yaba</option><option>Ikeja</option><option>Lekki</option><option>Surulere</option><option>Abuja</option><option>Port Harcourt</option><option>Ibadan</option><option>Kano</option></select></div>
+          <div class="field"><select id="cuisineFilter" aria-label="Filter by cuisine"><option value="">All specialities</option><option>Nigerian</option><option>Pastries &amp; Baking</option><option>Continental</option><option>Small Chops</option><option>Catering</option><option>Grill &amp; BBQ</option><option>Seafood</option><option>Healthy Meals</option></select></div>
+          <button class="btn btn-primary" id="clearFilters" type="button">Reset filters</button>
+        </div>
+        <div class="member-grid" id="memberGrid" aria-live="polite">
+          <article class="member" data-name="Amara Okafor" data-cuisine="Nigerian" data-area="Yaba" data-speciality="home chef meal prep">
+            <div class="member-photo" aria-label="Initials placeholder for Amara Okafor"><span class="member-initials">AO</span></div>
+            <div class="member-body"><div class="member-top"><div><h3>Amara Okafor</h3><div class="member-role">Chef &amp; Meal Prep</div></div><span class="verified">MEMBER</span></div><div class="details"><div class="detail">✦ <span><b>Cuisine:</b> Nigerian</span></div><div class="detail">⌖ <span><b>Area:</b> Yaba, Lagos</span></div></div><button class="btn btn-light contact-link" type="button">Copy member details ↗</button></div>
+          </article>
+          <article class="member" data-name="Tunde Adebayo" data-cuisine="Grill & BBQ" data-area="Ikeja" data-speciality="grill barbecue outdoor catering">
+            <div class="member-photo" aria-label="Initials placeholder for Tunde Adebayo"><span class="member-initials">TA</span></div>
+            <div class="member-body"><div class="member-top"><div><h3>Tunde Adebayo</h3><div class="member-role">Grill &amp; BBQ Specialist</div></div><span class="verified">MEMBER</span></div><div class="details"><div class="detail">✦ <span><b>Cuisine:</b> Grill &amp; BBQ</span></div><div class="detail">⌖ <span><b>Area:</b> Ikeja, Lagos</span></div></div><button class="btn btn-light contact-link" type="button">Copy member details ↗</button></div>
+          </article>
+          <article class="member" data-name="Zainab Bello" data-cuisine="Pastries & Baking" data-area="Lekki" data-speciality="baker cakes desserts pastries">
+            <div class="member-photo" aria-label="Initials placeholder for Zainab Bello"><span class="member-initials">ZB</span></div>
+            <div class="member-body"><div class="member-top"><div><h3>Zainab Bello</h3><div class="member-role">Baker &amp; Pastry Chef</div></div><span class="verified">MEMBER</span></div><div class="details"><div class="detail">✦ <span><b>Cuisine:</b> Pastries &amp; Baking</span></div><div class="detail">⌖ <span><b>Area:</b> Lekki, Lagos</span></div></div><button class="btn btn-light contact-link" type="button">Copy member details ↗</button></div>
+          </article>
+          <article class="member" data-name="Chinedu Eze" data-cuisine="Continental" data-area="Lagos Island" data-speciality="continental chef restaurant menu">
+            <div class="member-photo" aria-label="Initials placeholder for Chinedu Eze"><span class="member-initials">CE</span></div>
+            <div class="member-body"><div class="member-top"><div><h3>Chinedu Eze</h3><div class="member-role">Continental Chef</div></div><span class="verified">MEMBER</span></div><div class="details"><div class="detail">✦ <span><b>Cuisine:</b> Continental</span></div><div class="detail">⌖ <span><b>Area:</b> Lagos Island</span></div></div><button class="btn btn-light contact-link" type="button">Copy member details ↗</button></div>
+          </article>
+          <article class="member" data-name="Folake Williams" data-cuisine="Small Chops" data-area="Surulere" data-speciality="small chops finger foods event catering">
+            <div class="member-photo" aria-label="Initials placeholder for Folake Williams"><span class="member-initials">FW</span></div>
+            <div class="member-body"><div class="member-top"><div><h3>Folake Williams</h3><div class="member-role">Small Chops &amp; Events</div></div><span class="verified">MEMBER</span></div><div class="details"><div class="detail">✦ <span><b>Cuisine:</b> Small Chops</span></div><div class="detail">⌖ <span><b>Area:</b> Surulere, Lagos</span></div></div><button class="btn btn-light contact-link" type="button">Copy member details ↗</button></div>
+          </article>
+          <article class="member" data-name="Ibrahim Musa" data-cuisine="Nigerian" data-area="Abuja" data-speciality="nigerian dishes private chef">
+            <div class="member-photo" aria-label="Initials placeholder for Ibrahim Musa"><span class="member-initials">IM</span></div>
+            <div class="member-body"><div class="member-top"><div><h3>Ibrahim Musa</h3><div class="member-role">Private Chef</div></div><span class="verified">MEMBER</span></div><div class="details"><div class="detail">✦ <span><b>Cuisine:</b> Nigerian</span></div><div class="detail">⌖ <span><b>Area:</b> Abuja</span></div></div><button class="btn btn-light contact-link" type="button">Copy member details ↗</button></div>
+          </article>
+          <article class="member" data-name="Ngozi Nwosu" data-cuisine="Catering" data-area="Port Harcourt" data-speciality="event catering corporate buffet">
+            <div class="member-photo" aria-label="Initials placeholder for Ngozi Nwosu"><span class="member-initials">NN</span></div>
+            <div class="member-body"><div class="member-top"><div><h3>Ngozi Nwosu</h3><div class="member-role">Event &amp; Corporate Caterer</div></div><span class="verified">MEMBER</span></div><div class="details"><div class="detail">✦ <span><b>Cuisine:</b> Catering</span></div><div class="detail">⌖ <span><b>Area:</b> Port Harcourt</span></div></div><button class="btn btn-light contact-link" type="button">Copy member details ↗</button></div>
+          </article>
+          <article class="member" data-name="Damilola Adekunle" data-cuisine="Healthy Meals" data-area="Ibadan" data-speciality="healthy meals nutrition meal prep">
+            <div class="member-photo" aria-label="Initials placeholder for Damilola Adekunle"><span class="member-initials">DA</span></div>
+            <div class="member-body"><div class="member-top"><div><h3>Damilola Adekunle</h3><div class="member-role">Healthy Meal Specialist</div></div><span class="verified">MEMBER</span></div><div class="details"><div class="detail">✦ <span><b>Cuisine:</b> Healthy Meals</span></div><div class="detail">⌖ <span><b>Area:</b> Ibadan</span></div></div><button class="btn btn-light contact-link" type="button">Copy member details ↗</button></div>
+          </article>
+          <article class="member" data-name="Emeka Obi" data-cuisine="Seafood" data-area="Lagos Island" data-speciality="seafood chef fish">
+            <div class="member-photo" aria-label="Initials placeholder for Emeka Obi"><span class="member-initials">EO</span></div>
+            <div class="member-body"><div class="member-top"><div><h3>Emeka Obi</h3><div class="member-role">Seafood Specialist</div></div><span class="verified">MEMBER</span></div><div class="details"><div class="detail">✦ <span><b>Cuisine:</b> Seafood</span></div><div class="detail">⌖ <span><b>Area:</b> Lagos Island</span></div></div><button class="btn btn-light contact-link" type="button">Copy member details ↗</button></div>
+          </article>
+          <article class="member" data-name="Aisha Garba" data-cuisine="Nigerian" data-area="Kano" data-speciality="northern cuisine traditional dishes">
+            <div class="member-photo" aria-label="Initials placeholder for Aisha Garba"><span class="member-initials">AG</span></div>
+            <div class="member-body"><div class="member-top"><div><h3>Aisha Garba</h3><div class="member-role">Traditional Cuisine Specialist</div></div><span class="verified">MEMBER</span></div><div class="details"><div class="detail">✦ <span><b>Cuisine:</b> Nigerian</span></div><div class="detail">⌖ <span><b>Area:</b> Kano</span></div></div><button class="btn btn-light contact-link" type="button">Copy member details ↗</button></div>
+          </article>
+          <div class="empty" id="emptyState"><strong>No members found.</strong><br>Try another name, speciality, or area.</div>
+        </div>
+        <div class="disclaimer">Prototype note: all ten member profiles are illustrative placeholders. Replace names, areas and specialities with association-approved details before publishing.</div>
+      </div>
+    </section>
+
+    <section class="join-section" id="join">
+      <div class="wrap">
+        <div class="join-card" id="about">
+          <div>
+            <div class="kicker">Join the association</div>
+            <h2>Are you part of Nigeria's food service community?</h2>
+            <p>Connect with fellow professionals, showcase what you do, and become part of a community built around better food service and stronger connections.</p>
+          </div>
+          <div class="join-actions">
+            <button class="btn" id="joinButton" type="button">Copy membership enquiry ↗</button>
+            <div class="join-meta">Copy a message to send through APFSPN’s official contact channel.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div><div class="footer-title">Association of Professional Food Service Providers of Nigeria (APFSPN)</div><p>Connecting food service professionals across Nigeria.</p></div>
+      <div class="footer-links"><a href="#directory">Members</a><a href="#about">About</a><a href="#join">Membership</a></div>
+      <p>© <span id="year"></span> APFSPN · Concept preview</p>
+    </div>
+  </footer>
+  <div class="copy-notice" id="copyNotice" role="status" aria-live="polite">Details copied.</div>
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const areaFilter = document.getElementById('areaFilter');
+    const cuisineFilter = document.getElementById('cuisineFilter');
+    const cards = [...document.querySelectorAll('.member')];
+    const resultCount = document.getElementById('resultCount');
+    const emptyState = document.getElementById('emptyState');
+    const copyNotice = document.getElementById('copyNotice');
+    let noticeTimer;
+
+    function filterMembers() {
+      const query = searchInput.value.trim().toLowerCase();
+      const area = areaFilter.value.toLowerCase();
+      const cuisine = cuisineFilter.value.toLowerCase();
+      let visible = 0;
+      cards.forEach(card => {
+        const searchable = [card.dataset.name, card.dataset.cuisine, card.dataset.area, card.dataset.speciality, card.innerText].join(' ').toLowerCase();
+        const matches = searchable.includes(query) &&
+          (!area || card.dataset.area.toLowerCase() === area) &&
+          (!cuisine || card.dataset.cuisine.toLowerCase() === cuisine);
+        card.style.display = matches ? '' : 'none';
+        if (matches) visible++;
+      });
+      resultCount.textContent = visible;
+      emptyState.style.display = visible ? 'none' : 'block';
+    }
+    [searchInput, areaFilter, cuisineFilter].forEach(el => el.addEventListener('input', filterMembers));
+    document.getElementById('clearFilters').addEventListener('click', () => {
+      searchInput.value = ''; areaFilter.value = ''; cuisineFilter.value = ''; filterMembers(); searchInput.focus();
+    });
+    function showNotice(message) {
+      copyNotice.textContent = message; copyNotice.style.display = 'block';
+      clearTimeout(noticeTimer); noticeTimer = setTimeout(() => copyNotice.style.display = 'none', 2600);
+    }
+    async function copyText(text) {
+      try { await navigator.clipboard.writeText(text); showNotice('Copied to clipboard — ready to paste.'); }
+      catch (err) {
+        const field = document.createElement('textarea'); field.value = text; field.style.position = 'fixed'; field.style.opacity = '0'; document.body.appendChild(field); field.select();
+        const copied = document.execCommand('copy'); field.remove();
+        showNotice(copied ? 'Copied to clipboard — ready to paste.' : 'Copy unavailable. Please select and copy the details manually.');
+      }
+    }
+    document.querySelectorAll('.contact-link').forEach(button => button.addEventListener('click', () => {
+      const card = button.closest('.member');
+      const name = card.querySelector('h3').textContent.trim();
+      const role = card.querySelector('.member-role').textContent.trim();
+      const details = [...card.querySelectorAll('.detail')].map(el => el.innerText.replace(/^[✦⌖]\s*/, '').trim());
+      copyText(`APFSPN member enquiry\nName: ${name}\nSpeciality: ${role}\n${details.join('\n')}\n\nPlease connect me with this member.`);
+    }));
+    document.getElementById('joinButton').addEventListener('click', () => copyText('Hello, I’m interested in joining APFSPN. Please share the membership requirements and next steps.'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    filterMembers();
+  </script>
+</body>
+</html>
